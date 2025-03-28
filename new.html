@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Glowing Cursor Effect</title>
+<style>
+body {
+  margin: 0;
+  overflow: hidden;
+  background-color: #f0f0f0;
+  cursor: none;
+}
+
+#glow-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 60px; /* Increased width for larger radius */
+  height: 60px; /* Increased height for larger radius */
+  background-color: rgb(48, 81, 48); /* Dirty green color with adjusted opacity */
+  border-radius: 50%;
+  filter: blur(40px); /* Increased blur for a wider glow */
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  transition: background-color 0.2s ease-in-out;
+}
+</style>
+</head>
+<body>
+
+<div id="glow-cursor"></div>
+
+<div style="padding: 50px; text-align: center;">
+  <h1>Welcome to My Website</h1>
+  <p>Move your mouse around to see the glowing cursor effect.</p>
+  <button>Click Me</button>
+  <input type="text" placeholder="Type something">
+</div>
+
+<script>
+const glowCursor = document.getElementById('glow-cursor');
+
+document.addEventListener('mousemove', (e) => {
+  const x = e.clientX;
+  const y = e.clientY;
+
+  glowCursor.style.left = `${x}px`;
+  glowCursor.style.top = `${y}px`;
+});
+
+document.addEventListener('mousedown', () => {
+  glowCursor.style.backgroundColor = 'rgba(95, 125, 95, 0.7)'; /* Darker dirty green on click */
+});
+
+document.addEventListener('mouseup', () => {
+  glowCursor.style.backgroundColor = 'rgba(72, 100, 72, 0.6)'; /* Back to default dirty green */
+});
+</script>
+
+</body>
+</html>
